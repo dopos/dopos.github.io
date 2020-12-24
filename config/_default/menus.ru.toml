@@ -1,0 +1,11 @@
+[[main]]
+  identifier = "dcape"
+  name = "DCAPE"
+  url = "dcape"
+  weight = 1
+
+[[main]]
+  identifier = "updates"
+  name = "Обновления"
+  url = "updates"
+  weight = 2

@@ -1,0 +1,14 @@
+[ru]
+  title = "DoPoS"
+  languageName = "русский"
+  weight = 1
+  contentdir = "content/ru"
+  logoText = "Docker Powered Servers"
+
+[en]
+  title = "DoPoS"
+  languageName = "English"
+  weight = 2
+  contentdir = "content/en"
+  logoText = "Docker Powered Servers"
+

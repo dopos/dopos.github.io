@@ -1,0 +1,23 @@
+{
+  "name": "DoPoS",
+  "short_name": "Docker Powered Servers Docs",
+  "version": "1.0.0",
+  "default_locale": "ru",
+  "description": "DoPoS projects documentation site",
+  "start_url": "https://dopos.github.io/",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0071bc",
+  "background_color": "#fff",
+  "display": "standalone"
+}
