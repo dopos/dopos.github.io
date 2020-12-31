@@ -1,6 +1,6 @@
 ---
-title: "Deps"
-description: "test post"
+title: "Зависимости"
+description: "Приложения, необходимые для установки dcape"
 date: 2020-01-28T00:34:13+09:00
 draft: false
 weight: 2

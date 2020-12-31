@@ -1,7 +1,12 @@
 ---
 title: "narra"
 date: 2020-01-30T00:38:25+09:00
-description: Test description
+description: сервис OAuth2 авторизации для учетных записей gitea, используемый для ограничения доступа к приватным ресурсам
 draft: false
 weight: 6
 ---
+
+ Приложение |  [narra](https://github.com/dopos/narra)
+ -- | --
+ Docker | [image](https://hub.docker.com/r/dopos/narra)
+ Назначение | сервис OAuth2 авторизации для учетных записей gitea, используемый для ограничения доступа к приватным ресурсам

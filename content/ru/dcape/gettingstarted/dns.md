@@ -1,5 +1,5 @@
 ---
-title: "DNS setup"
+title: "Настройка DNS"
 description: "Варианты настройки DNS"
 date: 2020-01-28T00:34:13+09:00
 draft: false
@@ -17,14 +17,15 @@ weight: 3
 * `port.srv1.domain.tld` - для portainer
 * `ns.srv1.domain.tld` - для powerdns
 
-См. также: [DNS setup](README-DNS.md)
-
-
 ## /etc/hosts, для локального использования
 
 ```bash
 grep -q git.dev.lan /etc/hosts || \
-sudo bash -c 'cat >> /etc/hosts <<EOF
+sudo bash -c 'for n in "" git drone port ns ; do [ "$n" ] && n="$n." ;  echo "127.0.0.1 ${n}dev.lan" >> /etc/hosts ; done'
+
+cat >> /etc/hosts <<EOF
+for n in "" git drone port ns ; do echo ${n?-s}.dev.lan ; done
+
 
 127.0.0.1 dev.lan
 127.0.0.1 git.dev.lan
@@ -45,7 +46,7 @@ sudo service network-manager reload
 
 ## DNS зона, индивидуальная регистрация
 
-```
+```zone.conf
 srv1.domain.tld.        A       192.168.23.10
 git.srv1.domain.tld.    A       192.168.23.10
 drone.srv1.domain.tld.  A       192.168.23.10
@@ -55,7 +56,7 @@ ns.srv1.domain.tld.     A       192.168.23.10
 
 ## DNS зона, wildcard-domain
 
-```
+```zone.conf
 srv1.domain.tld.        A       192.168.23.10
 *.srv1.domain.tld.      A       192.168.23.10
 ```
@@ -64,7 +65,7 @@ srv1.domain.tld.        A       192.168.23.10
 
 Для регистрации wildcard сертификатов traefik редактирует зону по АПИ. Чтобы не давать ему доступ к основной DNS-зоне, можно для каждого сервера создать выделенную зону (в примере - `srv1.domain.tld`) и директивой `CNAME` делегировать управление сертификатами этой зоны отдельному серверу (в примере - серверу `ns.srv1.domain.tld`, т.е. локальному DNS). Используемая в **dcape v2** версия traefik это уже поддерживает.
 
-```
+```zone.conf
 srv1.domain.tld.                    A       192.168.23.10
 *.srv1.domain.tld.                  A       192.168.23.10
 
@@ -80,34 +81,32 @@ make init ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
   PDNS_LISTEN=192.168.23.10:53
 ```
+
 В `PDNS_LISTEN` порт изменен на стандартный (по умолчанию: 54) и задан ip, чтобы не возникало конфликта с локальным резолвером.
 
 См. также: [настройка связки taefik-powerdns](/apps/traefik/Makefile#L98) для `DNS=wild`
 
 ---
 
-
 ### Настройка DNS
 
-
 В DNS зоне для домена your.domain должна быть создана wildcard запись для ip сервера (`.your.domain A ip`)
-
-
 
 При установке на локальный компьютер, для доступа к сервисам dcape (cis.dev.lan, port.dev.lan) необходимо настроить wildcard domain *.dev.lan:
 [Описание настройки](https://voboghure.com/2020/01/02/enable-wildcard-sub-domain-for-localhost-on-ubuntu-18-04/)
 
-```
+```bash
 sudo bash -c 'echo "address=/.dev.lan/127.0.0.1" > /etc/NetworkManager/dnsmasq.d/dev.lan.conf'
 sudo service network-manager reload
 ```
 
 или можно прописать эти имена в /etc/hosts:
-```
+
+```bash
 sudo bash -c 'echo "127.0.0.1 cis.dev.lan" >> /etc/hosts'
 sudo bash -c 'echo "127.0.0.1 port.dev.lan" >> /etc/hosts'
 ```
+
 но в этом случае придется отдельно прописывать имя для каждого нового сервиса dcape.
 
 * [powerdns](https://www.powerdns.com/) - ([docker](https://store.docker.com/community/images/dopos/powerdns)) DNS-сервер, который хранит описания зон в БД postgresql
-

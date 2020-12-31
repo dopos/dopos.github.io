@@ -1,9 +1,9 @@
 ---
-title: "Installation"
-description: "test post"
+title: "Установка"
+description: "Инструкция по установке"
 date: 2020-01-28T00:34:13+09:00
 draft: false
-weight: 3
+weight: 4
 ---
 
 ### Исходники

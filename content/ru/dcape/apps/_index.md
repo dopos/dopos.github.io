@@ -1,8 +1,10 @@
 ---
-title: "Core applications"
+title: "Базовые приложения"
 date: 2020-02-28T10:08:56+09:00
-description: "dddd" 
+description: "Приложения, используемые для решения задач dcape" 
 draft: false
 collapsible: true
-weight: 4
+weight: 2
 ---
+
+Для решения задач проекта dcape разворачивает на серверах следующие приложения:

@@ -57,12 +57,12 @@ all: help
 
 ## start containers
 up:
-up: CMD=up -d
+up: CMD=up -d www
 up: dc
 
 ## restart and recreate containers
 reup:
-reup: CMD=up --force-recreate -d
+reup: CMD=up --force-recreate -d www
 reup: dc
 
 ## stop & remove container(s)

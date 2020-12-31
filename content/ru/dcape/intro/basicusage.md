@@ -1,6 +1,6 @@
 ---
-title: "Basic Usage"
-description: "Usage scenario samples"
+title: "Использование"
+description: "Действия для разворачивания приложения"
 date: 2020-01-28T00:34:51+09:00
 draft: false
 weight: 2

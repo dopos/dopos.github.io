@@ -2,13 +2,12 @@
 title: "Usage"
 description: "test post"
 date: 2020-01-28T00:39:06+09:00
-weight: 1
+weight: 5
 draft: false
 #collapsible: true
 ---
 
-*Markdown here*
-### Обновление файла .env
+## Обновление файла .env
 
 При обновлении проекта возможно появление новых переменных в `.env` файле.
 Алгоритм обновления .env с сохранением старых настроек:
@@ -35,4 +34,3 @@ grep -v "_VER=" .env > .env.bak
 mv .env .env.all
 make init
 ```
-

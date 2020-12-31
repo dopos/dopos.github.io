@@ -13,10 +13,9 @@ sections:
       fontSize: 32
       width: 415
     body:
-      subtitle: Deploy apps with docker on standalone servers, not clusters.
+      subtitle: Решение для развёртывания и настройки docker-приложений.
       subtitlePosition: left
       description: 
-        Expressive [docker-compose](https://docs.docker.com/compose/), great [docker]() and awesome open source applications hosted on [github]() gives ability to get CI/CD systems very easy.
-        In the simplest case, it is enough to have `docker-compose.yml` and run `docker-compose up` command. But sometimes reality is slightly harder.
-        Dopos helps to go all the way from idea to running stack of docker containers with help of [make]() and our project <a href="/dcape">DCAPE</a>.
+        Выразительный [docker-compose](https://docs.docker.com/compose/), отличный [docker](https://www.docker.com/) и потрясающие приложения с открытым исходным кодом, размещенные на [github](https://github.com/), дают возможность очень легко получить CI/CD системы развертывания приложений. В простейшем случае, достаточно иметь `docker-compose.yml` и выполнить команду `docker-compose up`. Но иногда реальность немного сложнее.
+        Dopos помогает пройти весь путь от репозитория до запуска стека контейнеров docker с помощью [make](https://www.gnu.org/software/make/) и нашего проекта <a href="/dcape">DCAPE</a>.
 ---

@@ -1,15 +1,22 @@
 ---
-title: "Quick Start"
-description: "test post"
+title: "Быстрый старт"
+description: "Как развернуть dcape, если уже есть gitea и DNS"
 date: 2020-01-28T00:34:41+09:00
 draft: false
-weight: 2
+weight: 1
 ---
 
-### Интернет-сервер без gitea
+В случае, если уже
+* настроен DNS c поддержкой wildcard-сертификатов SSL
+* есть сервер gitea (в примере - `it.domain.tld`)
+* в gitea создан `TOKEN`
+* на новом сервере установлены [зависимости]({{< ref "dependencies" >}})
+ 
+, установка dcape на этом новом сервере может быть произведена так:
 
-Вариант c поддержкой wildcard-сертификатов SSL, при котором gitea установлена на другом сервере (в примере - `it.domain.tld`) и уже создан `TOKEN`. Настройка и запуск могут быть выполнены одной командой:
 ```bash
+git clone -b v2 --single-branch --depth 1 https://github.com/dopos/dcape.git
+cd dcape
 make install ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
   NARRA_GITEA_ORG=dcape \
@@ -18,4 +25,5 @@ make install ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   GITEA=https://it.domain.tld \
   TOKEN=**token_from_gitea**
 ```
+
 В `PDNS_LISTEN` порт изменен на стандартный (по умолчанию: 54) и задан ip, чтобы не возникало конфликта с локальным резолвером.
