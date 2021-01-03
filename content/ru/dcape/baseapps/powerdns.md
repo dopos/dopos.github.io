@@ -10,3 +10,8 @@ weight: 7
  -- | --
  Docker | [image](https://hub.docker.com/r/psitrax/powerdns)
  Назначение | DNS-сервер для поддержки wildcard domain сертификатов
+
+powerdns - это DNS сервер, который поддерживает
+
+* хранение зон в БД (пример приложения управления зонами - [dcape-dns-config](https://github.com/dopos/dcape-dns-config))
+* управление зонами по АПИ (используется в dcape для поддержки wildcard-доменов)

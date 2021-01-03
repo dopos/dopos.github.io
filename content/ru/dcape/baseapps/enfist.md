@@ -10,3 +10,8 @@ weight: 5
  -- | --
  Docker | [image](https://hub.docker.com/r/apisite/enfist)
  Назначение | хранилище файлов конфигурации в postgresql с доступом через браузер и АПИ
+
+enfist - это сервис хранения конфигураций приложений, который позволяет редактировать файлы конфигураций
+
+* через web-интерфейс (доступ ограничивается narra)
+* через API (для доступа необходимо создать в gitea TOKEN, см [dcape-config-cli](https://github.com/dopos/dcape-config-cli))

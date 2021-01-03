@@ -1,9 +1,9 @@
 ---
-title: "Setup"
+title: "Приложения"
 description: "Адаптация приложения для развертывания в среде dcape
 "
 date: 2020-01-28T00:36:14+09:00
-weight: 1
+weight: 4
 draft: false
 ---
 
