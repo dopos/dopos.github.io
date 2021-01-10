@@ -6,8 +6,6 @@ draft: false
 weight: 3
 ---
 
-### DNS
-
 Т.к. **dcape** разворачивает несколько независимых сервисов, их имена должны быть прописаны в DNS. Предпочтительным является вариант регистрации wildcard domain, но можно и регистрировать индивидуально.
 Пример имен для сервера `srv1.domain.tld`:
 
@@ -17,57 +15,52 @@ weight: 3
 * `port.srv1.domain.tld` - для portainer
 * `ns.srv1.domain.tld` - для powerdns
 
-## /etc/hosts, для локального использования
+## /etc/hosts
+
+Вариант для случая, когда dcape разворачивается и используется на локальном компьютере, в т.ч. в случае, когда у этого компьютера нет сетевых интерфейсов.
+
+Т.к. базовые приложения dcape общаются между собой, их hostname нельзя привязать к `loopback`-интерфейсу. В качестве ip-адреса можно использовать шлюз подсети dcape, которая задается параметром `DCAPE_SUBNET` (по умолчанию подсеть - 100.127.0.0/24 и шлюз - 100.127.0.1):
 
 ```bash
-grep -q git.dev.lan /etc/hosts || \
-sudo bash -c 'for n in "" git drone port ns ; do [ "$n" ] && n="$n." ;  echo "127.0.0.1 ${n}dev.lan" >> /etc/hosts ; done'
-
-cat >> /etc/hosts <<EOF
-for n in "" git drone port ns ; do echo ${n?-s}.dev.lan ; done
-
-
-127.0.0.1 dev.lan
-127.0.0.1 git.dev.lan
-127.0.0.1 drone.dev.lan
-127.0.0.1 port.dev.lan
-127.0.0.1 ns.dev.lan
-
-EOF
-'
+grep -q " dev.lan" /etc/hosts || \
+sudo bash -c 'for n in "" git drone port ns ; do [ "$n" ] && n="$n." ; echo "100.127.0.1 ${n}dev.lan" >> /etc/hosts ; done'
 ```
 
-## dnsmasq, для локального использования
+## dnsmasq
+
+В случае использования локальной сети, когда известен ip-адрес компьютера с dcape (в примере - 192.168.1.2) и установлен dns-сервер dnsmasq, можно создать локальный wildcard-domain:
 
 ```bash
-sudo bash -c 'echo "address=/.dev.lan/127.0.0.1" > /etc/NetworkManager/dnsmasq.d/dev.lan.conf'
+sudo bash -c 'echo "address=/.dev.lan/192.168.1.2" > /etc/NetworkManager/dnsmasq.d/dev.lan.conf'
 sudo service network-manager reload
 ```
 
-## DNS зона, индивидуальная регистрация
+## DNS зона
+
+### индивидуальная регистрация
 
 ```zone.conf
-srv1.domain.tld.        A       192.168.23.10
-git.srv1.domain.tld.    A       192.168.23.10
-drone.srv1.domain.tld.  A       192.168.23.10
-port.srv1.domain.tld.   A       192.168.23.10
-ns.srv1.domain.tld.     A       192.168.23.10
+srv1.domain.tld.        A       19.72.10.23
+git.srv1.domain.tld.    A       19.72.10.23
+drone.srv1.domain.tld.  A       19.72.10.23
+port.srv1.domain.tld.   A       19.72.10.23
+ns.srv1.domain.tld.     A       19.72.10.23
 ```
 
-## DNS зона, wildcard-domain
+### wildcard-domain
 
 ```zone.conf
-srv1.domain.tld.        A       192.168.23.10
-*.srv1.domain.tld.      A       192.168.23.10
+srv1.domain.tld.        A       19.72.10.23
+*.srv1.domain.tld.      A       19.72.10.23
 ```
 
-## DNS зона, wildcard-domain с выделенным сервером для поддержки wildcard сертификатов Let's Encrypt
+### wildcard-domain с делегированием зоны
 
-Для регистрации wildcard сертификатов traefik редактирует зону по АПИ. Чтобы не давать ему доступ к основной DNS-зоне, можно для каждого сервера создать выделенную зону (в примере - `srv1.domain.tld`) и директивой `CNAME` делегировать управление сертификатами этой зоны отдельному серверу (в примере - серверу `ns.srv1.domain.tld`, т.е. локальному DNS). Используемая в **dcape v2** версия traefik это уже поддерживает.
+Для регистрации wildcard сертификатов traefik производит изменения в DNS-зоне через АПИ DNS-сервера. Чтобы не давать ему доступ к основной DNS-зоне, можно для каждого сервера создать выделенную зону (в примере - `srv1.domain.tld`) и директивой `CNAME` делегировать управление сертификатами этой зоны отдельному серверу (в примере - серверу `ns.srv1.domain.tld`, т.е. локальному DNS). Используемая в **dcape v2** версия traefik это уже поддерживает.
 
 ```zone.conf
-srv1.domain.tld.                    A       192.168.23.10
-*.srv1.domain.tld.                  A       192.168.23.10
+srv1.domain.tld.                    A       19.72.10.23
+*.srv1.domain.tld.                  A       19.72.10.23
 
 acme-srv1.domain.tld.               NS       ns.srv1.domain.tld
 _acme-challenge.srv1.domain.tld.    CNAME    acme-srv1.domain.tld
@@ -79,34 +72,9 @@ _acme-challenge.*.srv1.domain.tld.  CNAME    acme-srv1.domain.tld
 ```bash
 make init ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
-  PDNS_LISTEN=192.168.23.10:53
+  PDNS_LISTEN=19.72.10.23:53
 ```
 
 В `PDNS_LISTEN` порт изменен на стандартный (по умолчанию: 54) и задан ip, чтобы не возникало конфликта с локальным резолвером.
 
-См. также: [настройка связки taefik-powerdns](/apps/traefik/Makefile#L98) для `DNS=wild`
-
----
-
-### Настройка DNS
-
-В DNS зоне для домена your.domain должна быть создана wildcard запись для ip сервера (`.your.domain A ip`)
-
-При установке на локальный компьютер, для доступа к сервисам dcape (cis.dev.lan, port.dev.lan) необходимо настроить wildcard domain *.dev.lan:
-[Описание настройки](https://voboghure.com/2020/01/02/enable-wildcard-sub-domain-for-localhost-on-ubuntu-18-04/)
-
-```bash
-sudo bash -c 'echo "address=/.dev.lan/127.0.0.1" > /etc/NetworkManager/dnsmasq.d/dev.lan.conf'
-sudo service network-manager reload
-```
-
-или можно прописать эти имена в /etc/hosts:
-
-```bash
-sudo bash -c 'echo "127.0.0.1 cis.dev.lan" >> /etc/hosts'
-sudo bash -c 'echo "127.0.0.1 port.dev.lan" >> /etc/hosts'
-```
-
-но в этом случае придется отдельно прописывать имя для каждого нового сервиса dcape.
-
-* [powerdns](https://www.powerdns.com/) - ([docker](https://store.docker.com/community/images/dopos/powerdns)) DNS-сервер, который хранит описания зон в БД postgresql
+См. также: [настройка связки taefik-powerdns](https://github.com/dopos/dcape/blob/v2/apps/traefik/Makefile#L98) для `DNS=wild`

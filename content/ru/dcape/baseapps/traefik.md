@@ -20,7 +20,7 @@ Traefik - ключевой сервис dcape. Он решает задачи:
 
 ## Особенности
 
-### Варианты файла конфигурации
+### Варианты файла конфигурации {#configs}
 
 В составе dcape есть три варианта файла конфигурации traefik
 
@@ -28,7 +28,7 @@ Traefik - ключевой сервис dcape. Он решает задачи:
 * [traefik.acme-http.yml](https://github.com/dopos/dcape/blob/v2/apps/traefik/traefik.acme-http.yml) - https с получением сертификатов по протоколу `HTTP-01`
 * [traefik.acme.yml](https://github.com/dopos/dcape/blob/v2/apps/traefik/traefik.acme.yml) - https с получением сертификатов по протоколу `HTTP-01` и `DNS-01` (для поддержки wildcard-доменов)
 
-При выполнении команды `make apply`, по значению параметра `ACME` определяется вариант конфигурации и соответствующий файл копируется в `var/traefik/traefik.yml`
+При выполнении команды `make apply`, по значению параметра `ACME` определяется вариант конфигурации и соответствующий файл копируется в `var/traefik/traefik.yml` с заменой переменных. Если файл `var/traefik/traefik.yml` уже существует, команда `make apply` не производит в нем никаких изменений.
 
 ### Ограничение видимости контейнеров
 

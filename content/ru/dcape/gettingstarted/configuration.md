@@ -12,36 +12,36 @@ weight: 5
 
 Следующие параметры имеют ключевое значение для конфигурации **dcape**:
 
-### `DCAPE_TAG`
+### DCAPE_TAG
 
 * Идентификатор стека приложений, позволяющий изолировать его от других контейнеров docker (в т.ч. и от другой копии стека **dcape** если такая будет запущена на том же сервере)
 * Префикс контейнеров стека (значение используется как [COMPOSE_PROJECT_NAME](https://docs.docker.com/compose/reference/envvars/#compose_project_name))
 
-### `DCAPE_DOMAIN`
+### DCAPE_DOMAIN
 
 * hostname для базовых приложений (narra, enfist, traefik)
 * суффикс по умолчанию для hostname остальных приложений стека
 
-### `GITEA`
+### GITEA
 
 * значения: `[yes]|<URL>`
 * `yes` - добавить в конфигурацию локальный сервер gitea
 * `<URL>` - адрес внешнего сервера gitea
 
-### `DNS`
+### DNS
 
 * значения: `[no]|yes|wild`
 * добавить в конфигурацию локальный сервер powerdns
 * `wild` - настроить зону для поддержки wildcard сертификатов letsencrypt
 
-### `ACME`
+### ACME
 
 * значения: `[no]|http|wild`
 * включить поддержку сертификатов letsencrypt
 * `no` - адреса сервисов **dcape** будут начинаться с `http://`, иначе - `https://`
 * `wild` - в конфигурацию traefik будет добавлена поддержка сертификатов для домена `*.${DCAPE_DOMAIN}`
 
-### `NARRA_GITEA_ORG`
+### NARRA_GITEA_ORG
 
 * username организации gitea, участникам которой будет предоставлен доступ к приватным ресурсам
 
@@ -51,9 +51,4 @@ weight: 5
 
 ## См. также
 
-* Файл конфигурации traefik для сертификатов [только HTTP-01](/apps/traefik/traefik.acme-http.yml) и [HTTP-01 + DNS-01](/apps/traefik/traefik.acme.yml)
-
-При выполнении команды `make apply` соответствующий файл конфигурации traefik копируется в `var/traefik/traefik.yml` с заменой переменных.
-
-Если файл `var/traefik/traefik.yml` уже существует, команды `make` не производит в нем никаких изменений.
-
+* [Варианты файла конфигурации traefik](/dcape/baseapps/traefik/#configs)

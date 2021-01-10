@@ -1,5 +1,5 @@
 ---
-title: "October 2017"
+title: "Октябрь 2017"
 description: "Dcape v1.0.0-rc1"
 date: 2017-08-11T00:10:37+09:00
 draft: false
@@ -22,6 +22,7 @@ Release: [v1.0.0-rc1, Ready to use](https://github.com/dopos/dcape/releases/tag/
 Date: 2017-10-19
 
 ### Изменено
+
 * apps/cis: добавлено создание каталогов var/apps, var/log в cis-apply
 * apps/cis: изменена версия webtail (0.12)
 * apps/enfist: исправлено обновление sql-пакетов enfist,rpc и их текущие версии
@@ -47,4 +48,3 @@ make enfist-apply
 
 make dc CMD="up -d webtail"
 ```
-

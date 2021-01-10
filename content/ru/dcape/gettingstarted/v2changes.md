@@ -6,6 +6,10 @@ draft: false
 weight: 6
 ---
 
+**Dcape** v2 отличается от v1 переездом деплоя на drone и сменой версии traefik на v2.
+
+Подробнее об изменениях:
+
 ## Версия traefik
 
 * *Было:* 1.7
@@ -20,9 +24,11 @@ weight: 6
 #### Поддержка TLS
 
 Теперь для добавления TLS достаточно добавить в блок `labels` файла `docker-compose.yml` строку вида
+
 ```docker-compose.yml
     - traefik.http.routers.${APP_TAG}.tls=${USE_TLS}
 ```
+
 Кроме этого, поддержка wildcard-domain теперь доступна "из коробки" и реализована дополнительным сервисом (powerdns) которым traefik управляет через АПИ.
 
 ### Авторизация для приватных ресурсов
@@ -31,7 +37,7 @@ weight: 6
 
 ## Сервис развертывания
 
-* *Было:* webhook + webtail с командами `make start-hook` и `make update`
-* *Стало:* drone и .drone.yml
+* *Было:* webhook + webtail с командами `make start-hook` и `make update` (make использует /bin/bash)
+* *Стало:* drone и .drone.yml (make использует /bin/sh)
 
-Основным способом для остановки контейнера и удаления образа теперь является portainer
+Основным способом для остановки контейнера и удаления образа теперь является portainer.
