@@ -1,0 +1,34 @@
+
+version: '2'
+
+services:
+  www:
+    image: ${IMAGE}:${IMAGE_VER}
+    labels:
+      - traefik.enable=true
+      - dcape.traefik.tag=${DCAPE_TAG}
+      - traefik.http.routers.${APP_TAG}.rule=Host(`${APP_SITE:?Must be set}`) || Host(`www.${APP_SITE}`)
+      # TLS support
+      - traefik.http.routers.${APP_TAG}.tls=${USE_TLS}
+      # use wildcard-domain
+      - traefik.http.routers.${APP_TAG}.tls.certresolver=letsEncrypt
+      - traefik.http.routers.${APP_TAG}.tls.domains[0].main=${APP_SITE}
+      - traefik.http.routers.${APP_TAG}.tls.domains[0].sans=${APP_ACME_DOMAIN}
+      # Redirect www.domain.tld -> domain.tld
+      - traefik.http.middlewares.${APP_TAG}-redirwww.redirectregex.regex=^http(s?)://www.${APP_SITE}/(.*)
+      - traefik.http.middlewares.${APP_TAG}-redirwww.redirectregex.replacement=http$${1}://${APP_SITE}/$${2}
+      - traefik.http.routers.${APP_TAG}.middlewares=${APP_TAG}-redirwww
+    volumes:
+      # Use TZ from host config
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      # Attach site content
+      - ${APP_ROOT}/html:/usr/share/nginx/html:ro
+    restart: always
+    networks:
+      - lan
+
+networks:
+  lan:
+    external:
+      name: ${DCAPE_NET}
