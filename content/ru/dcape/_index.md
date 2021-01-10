@@ -5,7 +5,7 @@ date: 2020-01-11T14:09:21+09:00
 draft: false
 ---
 
-DCAPE - это аббревиатура от "**D**ocker **c**omposed **ap**plication **e**nvironment".
+> DCAPE - аббревиатура от "**D**ocker **c**omposed **ap**plication **e**nvironment".
 
 [![GitHub Release][1]][2] | ![GitHub code size in bytes][3] | [![GitHub license][4]][5]
 --|--|--
@@ -16,18 +16,7 @@ DCAPE - это аббревиатура от "**D**ocker **c**omposed **ap**plic
 [4]: https://img.shields.io/github/license/dopos/dcape.svg
 [5]: LICENSE
 
-[Dcape](https://github.com/dopos/dcape) - это комплект файлов для [make](https://www.gnu.org/software/make/) и [docker-compose](https://docs.docker.com/compose/), который позволяет "по нажатию кнопки" разворачивать и обновлять:
+[Dcape](https://github.com/dopos/dcape) - это комплект файлов для [make](https://www.gnu.org/software/make/) и [docker-compose](https://docs.docker.com/compose/), который предназначен для решения следующих задач:
 
-* сторонние приложения из образов docker
-* собственные приложения из исходных текстов, размещенных в git
-
-Для поддержки этих процессов на сервере с помощью **dcape** разворачиваются [базовые приложения](dcape/apps/).
-
-## Особенности реализации
-
-* для запуска контейнеров достаточно docker и make (docker-compose запускается в контейнере)
-* для настройки приложения достаточно двух файлов - `Makefile` и `docker-compose.yml`
-* настройки встроенных приложений размещены в `apps/*/docker-compose.inc.yml`, все эти файлы средствами `make` копируются в `docker-compose.yml` перед запуском `docker-compose`
-* файлы `var/apps/*/Makefile` содержат две цели (для адаптированных приложений):
-  * `init` - добавление настроек приложения в файл `.env`
-  * `apply` - подготовка БД и данных приложения в `var/`
+* сконфигурировать и развернуть [базовые приложения](dcape/baseapps/), позволяющие в автоматическом режиме производить развертывание docker-приложений
+* сформулировать правила оформления [приложений](dcape/usage/apps/), позволяющих развертывание в этой среде
