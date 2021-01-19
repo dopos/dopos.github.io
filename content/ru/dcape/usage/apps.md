@@ -6,14 +6,17 @@ weight: 1
 draft: false
 ---
 
-## Используемые файлы
+## Введение
 
-Как правило, приложение в среде **dcape** содержит файлы:
+Dcape v2 предназначен для построения gitops (CI/CD) решений, в которых на каждом сервере установлен **dcape** и на одном - web-сервис git (например: gitea), который по факту изменений в репозитории активирует **drone** на присоединенных серверах.
 
-* `Makefile` с командами
-  * `${CFG}.sample` - создание файла конфигурации запуска для размещения его в enfist (используется в `setup config`)
-  * `.drone-up` - старт контейнера, используется в `.drone.yml`
-* `docker-compose.yml` - конфигурация сервисов docker, используемых для сборки и запуска приложений, с инструкциями для интеграции с traefik
+После развёртывания сервисов git/drone, задача dcape уже решена, но возникает возможность добавить в деплой:
+
+* [docker-compose.yml](https://github.com/dopos/dcape/blob/v2/apps/drone/dcape-app/docker-compose.yml)
+* [Makefile](https://github.com/dopos/dcape/blob/v2/apps/drone/dcape-app/Makefile)
+
+Эти файлы могут использоваться при развёртывании приложений. [Пример использования](https://github.com/dopos/dcape-app-gomodproxy)
+
 
 ## Алгоритм настройки
 
