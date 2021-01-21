@@ -8,10 +8,10 @@ weight: 1
 
 В случае, если уже
 
-* настроен DNS c поддержкой wildcard-сертификатов SSL
+* настроен DNS c поддержкой wildcard-record
 * есть сервер gitea (в примере - `it.domain.tld`)
 * в gitea создан `TOKEN`
-* на новом сервере установлены [зависимости]({{< ref "dependencies" >}})
+* на новом сервере установлены [зависимости](/dcape/gettingstarted/dependencies/)
 
 , установка dcape на этом новом сервере может быть произведена так:
 

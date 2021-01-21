@@ -6,7 +6,10 @@ draft: false
 weight: 6
 ---
 
-**Dcape** v2 отличается от v1 переездом деплоя на drone и сменой версии traefik на v2.
+**Dcape** v2 отличается от v1:
+* переездом деплоя на drone
+* сменой версии traefik на v2.
+* добавлением локально создаваемого образа `dcape-compose`
 
 Подробнее об изменениях:
 
@@ -35,9 +38,15 @@ weight: 6
 
 Ранее осуществлялась через API gitea, теперь gitea выступает OAuth2-сервером. Это добавило необходимость регистрировать в gitea приложения (narra, drone) и разрешать их использование для каждого пользователя.
 
+## dcape-compose
+
+* [Dockerfile](https://github.com/dopos/dcape/blob/v2/apps/drone/Dockerfile)
+
 ## Сервис развертывания
 
 * *Было:* webhook + webtail с командами `make start-hook` и `make update` (make использует /bin/bash)
 * *Стало:* drone и .drone.yml (make использует /bin/sh)
+
+## Удаление деплоя
 
 Основным способом для остановки контейнера и удаления образа теперь является portainer.

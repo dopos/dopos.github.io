@@ -8,7 +8,7 @@ weight: 2
 
  Приложение |  [postgresql](https://www.postgresql.org)
  -- | --
- Docker | [image](https://hub.docker.com/_/postgres)
+ Docker | [postgres](https://hub.docker.com/_/postgres)
  Назначение | хранение конфигураций всех приложений и размещение баз данных приложений, которым требуется СУБД
 
 ## Назначение
@@ -36,15 +36,4 @@ weight: 2
 
 ### Резервные копии
 
-Для резервного копирования баз данных используется приложение [pg-backup](https://github.com/dopos/dcape-app-pg-backup) которое ежедневно (по крону) делает дампы указанных в настройка баз и размещает их в формате `.tgz` в каталоге `var/db/backup`
-
-## Пример использования
-
-Пример приложения, использующего postgresql - [dcape-app-mattermost](https://github.com/dopos/dcape-app-mattermost)
-
-В файле [Makefile](https://github.com/dopos/dcape-app-mattermost/blob/master/Makefile) к СУБД относятся следующие цели:
-
-* `docker-wait` - ожидание запуска контейнера postgresql и готовности СУБД
-* `db-create` - создание пользователя и БД, после создания БД - импорт дампа, если он задан в настройках
-* `db-drop` - удаление БД и пользователя
-* `psql` - запуск psql из запущенного контейнера postgresql c присоединением к БД приложения
+Для резервного копирования баз данных используется приложение [pg-backup](https://github.com/dopos/dcape-app-pg-backup) которое по заданному в настройках расписанию делает дампы указанных в настройках баз и размещает их в формате `.tgz` в каталоге `var/db/backup`

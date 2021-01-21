@@ -10,7 +10,6 @@ steps:
   image: ${DCAPE_COMPOSE}
   commands:
   - . setup config
-  - . setup root
   - make .drone-up
   volumes:
   - name: dockersock
