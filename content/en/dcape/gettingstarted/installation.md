@@ -75,7 +75,7 @@ make init ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
   PDNS_LISTEN=192.168.23.10:53 \
   NARRA_GITEA_ORG=dcape \
-  DRONE_ADMIN=lekovr \
+  DRONE_ADMIN=dcapeadmin \
   GITEA=https://it.domain.tld
 
 ```

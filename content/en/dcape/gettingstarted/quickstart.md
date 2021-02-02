@@ -13,7 +13,7 @@ weight: 2
 make install ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
   NARRA_GITEA_ORG=dcape \
-  DRONE_ADMIN=lekovr \
+  DRONE_ADMIN=dcapeadmin \
   PDNS_LISTEN=192.168.23.10:53 \
   GITEA=https://it.domain.tld \
   TOKEN=**token_from_gitea**
