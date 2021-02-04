@@ -1,7 +1,7 @@
 ---
 title: "Январь 2021"
 description: "Dcape v2.0.0"
-date: 2021-01-2800:10:37+09:00
+date: 2021-01-28T00:10:37+09:00
 draft: false
 weight: -7
 enableToc: false
