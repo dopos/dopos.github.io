@@ -1,4 +1,4 @@
-baseURL = "http://dopos.github.io"
+baseURL = "https://dopos.github.io"
 title = "DoPoS"
 theme = "zdoc"
 
