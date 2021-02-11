@@ -4,18 +4,18 @@ description: "Docker powered servers"
 date: 2020-01-11T14:09:21+09:00
 draft: false
 sections:
-  - bgcolor: DarkSlateBlue
+  - bg11color: DarkSlateBlue
     type: normal
     header:
       title: Docker powered servers
       hlcolor: DarkKhaki
-      color: "#fff"
       fontSize: 32
       width: 415
     body:
-      subtitle: Решение для развёртывания и настройки docker-приложений.
+      subtitle: Решение для развёртывания и настройки docker-приложений
       subtitlePosition: left
       description: 
-        Выразительный [docker-compose](https://docs.docker.com/compose/), отличный [docker](https://www.docker.com/) и потрясающие приложения с открытым исходным кодом, размещенные на [github](https://github.com/), дают возможность очень легко получить CI/CD системы развертывания приложений. В простейшем случае, достаточно иметь `docker-compose.yml` и выполнить команду `docker-compose up`. Но иногда реальность немного сложнее.
-        Dopos помогает пройти весь путь от репозитория до запуска стека контейнеров docker с помощью [make](https://www.gnu.org/software/make/) и нашего проекта <a href="/dcape">DCAPE</a>.
+        Проект **dopos** (**do**cker **po**wered **s**ervers) - это еще один вариант решения задачи *"На дешевом виртуальном сервере с небольшим оверхедом построить среду для развёртывания [docker](https://www.docker.com/)-приложений"*. Решение основано на [docker-compose](https://docs.docker.com/compose/) и состоит из <a href="/dcape">DCAPE</a>, инструмента создания среды для развёртывания, и адаптированных для этой среды <a href="https://github.com/topics/dcape2-compartible">настроек приложений</a>.
+        <br><br>
+        Замечательный [docker](https://www.docker.com/) и потрясающие приложения с открытым исходным кодом, размещенные на [github](https://github.com/), дают возможность очень легко получить CI/CD системы развёртывания приложений. В простейшем случае, достаточно иметь `docker-compose.yml` и выполнить команду `docker-compose up`. Но для того, чтобы удаленно разворачивать свои или сторонние приложения командой `git push`, необходимо что-то еще. Например - <a href="/dcape">DCAPE</a>.
 ---
