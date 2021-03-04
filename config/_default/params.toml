@@ -7,7 +7,7 @@ themeOptions = ["light", "dark"]
 
 useFaviconGenerator = true # https://www.favicon-generator.org/
 
-editBaseURL = "https://github.com/dopos/dopos.github.io/blob/main/content/ru"
+editBaseURL = "https://github.com/dopos/dopos.github.io/blob/main/"
 
 enableTocSwitch = true
 enableLandingBackground = false
