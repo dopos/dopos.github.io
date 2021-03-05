@@ -1,6 +1,6 @@
 ---
-title: "Обновление"
-description: "Обновление dcape и версий сервисов dcape"
+title: "Updates"
+description: "Dcape & used service versions updates"
 date: 2020-01-28T00:39:06+09:00
 weight: 2
 draft: false

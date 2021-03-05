@@ -1,12 +1,11 @@
 logo = true
-logoText = "DOPOS"
+logoText = "dopos"
 logoType = "short" # long, short
 description = "Docker powered servers documentation site."
 
 themeOptions = ["light", "dark"]
 
 useFaviconGenerator = true # https://www.favicon-generator.org/
-
 editBaseURL = "https://github.com/dopos/dopos.github.io/blob/main/"
 
 enableTocSwitch = true

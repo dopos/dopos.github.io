@@ -1,12 +1,12 @@
 ---
-title: "Приложения"
-description: "Адаптация приложения для развертывания в среде dcape"
+title: "Applications"
+description: "How to deploy application with dcape"
 date: 2020-01-28T00:36:14+09:00
 weight: 1
 draft: false
 ---
 
-## Введение
+## Introduction
 
 Dcape v2 предназначен для построения gitops (CI/CD) решений, в которых на каждом сервере установлен **dcape** и на одном - web-сервис git (например: gitea), который по факту изменений в репозитории активирует **drone** на присоединенных серверах.
 

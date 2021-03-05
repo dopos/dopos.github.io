@@ -1,5 +1,5 @@
 baseURL = "https://dopos.github.io"
-title = "DoPoS"
+title = "dopos"
 theme = "zdoc"
 
 defaultContentLanguage = "ru"

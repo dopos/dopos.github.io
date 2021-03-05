@@ -47,4 +47,3 @@ DCAPE stands for "**D**ocker **c**omposed **ap**plication **e**nvironment".
 
 * для второй копии изменить порты в параметрах `TRAEFIK_LISTEN` и `TRAEFIK_LISTEN_SSL`
 * изменить параметр `DCAPE_TAG`
-

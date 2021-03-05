@@ -1,12 +1,12 @@
 [ru]
-  title = "DoPoS"
+  title = "dopos"
   languageName = "Русский"
   weight = 1
   contentdir = "content/ru"
   logoText = "Docker-серверы"
 
 [en]
-  title = "DoPoS"
+  title = "dopos"
   languageName = "English"
   weight = 2
   contentdir = "content/en"

@@ -1,11 +1,23 @@
 [[main]]
   identifier = "dcape"
   name = "DCAPE"
-  url = "dcape"
+  url = "https://github.com/dopos/dcape"
   weight = 1
+
+[[main]]
+  identifier = "apps"
+  name = "Настройки приложений"
+  url = "https://github.com/topics/dcape2-compartible"
+  weight = 2
+
+[[main]]
+  identifier = "docs"
+  name = "Документация"
+  url = "dcape"
+  weight = 3
 
 [[main]]
   identifier = "updates"
   name = "Обновления"
   url = "updates"
-  weight = 2
+  weight = 4
