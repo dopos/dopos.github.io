@@ -7,6 +7,12 @@ weight: -8
 enableToc: false
 ---
 
+## dcape v2.1.1
+
+Release: [v2.1.1](https://github.com/dopos/dcape/releases/tag/v2.1.1)
+
+## dcape v2.1.0
+
 Github: [dcape](https://github.com/dopos/dcape)
 Release: [v2.1.0](https://github.com/dopos/dcape/releases/tag/v2.1.0)
 
