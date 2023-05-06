@@ -8,7 +8,7 @@ weight: 6
 
  Приложение |  [narra](https://github.com/dopos/narra)
  -- | --
- Docker | [dopos/narra](https://hub.docker.com/r/dopos/narra)
+ Docker | [ghcr.io/dopos/narra](https://github.com/dopos/narra/pkgs/container/narra)
  Назначение | сервис OAuth2 авторизации для учетных записей gitea, используемый для ограничения доступа к приватным ресурсам
 
 Narra - это OAuth2 прокси для учетных записей gitea, который используется для ограничения доступа к приватным ресурсам:

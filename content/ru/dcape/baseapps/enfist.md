@@ -8,7 +8,7 @@ weight: 5
 
  Приложение |  [enfist](https://github.com/apisite/app-enfist)
  -- | --
- Docker | [apisite/enfist](https://hub.docker.com/r/apisite/enfist)
+ Docker | [ghcr.io/apisite/app-enfist](https://github.com/apisite/app-enfist/pkgs/container/app-enfist)
  Назначение | хранилище файлов конфигурации в postgresql с доступом через браузер и АПИ
 
 **Enfist** - это сервис хранения конфигураций приложений. Конфигурации хранятся в БД в виде Key-value таблицы, где ключ (key) формируется из адреса git репозитория `organization--repo_name--branch` (`организация--проект--ветка`), а значение (value) - содержимое `.env` файла.
