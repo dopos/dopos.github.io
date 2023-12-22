@@ -76,3 +76,7 @@ commento = false
   enable = false
   scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
   dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
+
+[plausible]
+  enable = true
+  jsLocation = "https://sap.cr.elfire.ru/js/script.js"

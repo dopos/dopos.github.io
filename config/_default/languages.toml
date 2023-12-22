@@ -7,7 +7,7 @@
 
 [en]
   title = "dopos"
-  languageName = "English"
+  languageName = "English (draft)"
   weight = 2
   contentdir = "content/en"
   logoText = "Docker Powered Servers"
