@@ -42,7 +42,7 @@ echo -n "HTPASS: "
 echo $(htpasswd -nb $LOGIN $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 
-* добавить в docker-compose.yml после строки
+* добавить в apps/_router/docker-compose.inc.yml после строки
 ```
       - "traefik.http.routers.dashboard.middlewares=narra"
 ```
@@ -50,3 +50,4 @@ echo $(htpasswd -nb $LOGIN $PASS) | sed -e s/\\$/\\$\\$/g
 ```
       - "traefik.http.middlewares.narra.basicauth.users=<HTPASS>"
 ```
+* выполнить `make up`
