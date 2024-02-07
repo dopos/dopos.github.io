@@ -3,7 +3,7 @@ title: "Отличия dcape v2"
 description: "Отличия dcape версии 2 от версии 1"
 date: 2020-01-28T00:34:41+09:00
 draft: false
-weight: 6
+weight: 7
 ---
 
 **Dcape** v2 отличается от v1:

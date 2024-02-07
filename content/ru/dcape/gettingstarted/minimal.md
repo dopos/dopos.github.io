@@ -3,7 +3,7 @@ title: "Минимальная конфигурация"
 description: "Как развернуть dcape без gitea и DNS"
 date: 2024-02-07T00:34:41+09:00
 draft: false
-weight: 1
+weight: 5
 ---
 
 Dcape может быть развернут в конфигурации `CLI-only`, с минимальным набором контейнеров
@@ -32,10 +32,10 @@ make install ACME=yes DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
 
 сгенерить пароль
 
-```
+```bash
 PASS=$(openssl rand -hex 16; echo)
-echo $PASS
-echo "<password>
+echo "Password: $PASS"
+echo -n "HTPASS: "
 echo $(htpasswd -nb admin $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 
@@ -45,5 +45,5 @@ echo $(htpasswd -nb admin $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 строку
 ```
-      - "traefik.http.middlewares.narra.basicauth.users=admin:<password>"
+      - "traefik.http.middlewares.narra.basicauth.users=admin:<HTPASS>"
 ```

@@ -3,7 +3,7 @@ title: "Конфигурация"
 description: "Параметры конфигурации"
 date: 2020-01-28T00:34:56+09:00
 draft: false
-weight: 5
+weight: 6
 ---
 
 ## Аргументы 'make init'
