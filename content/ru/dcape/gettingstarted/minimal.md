@@ -23,9 +23,9 @@ Dcape может быть развернут в конфигурации `CLI-on
 ```bash
 git clone --single-branch --depth 1 https://github.com/dopos/dcape.git
 cd dcape
-make install ACME=yes DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
+make install DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
   DCAPE_DOMAIN=host.example.com \
-  TRAEFIK_ACME_EMAIL=admin@example.com
+  ACME=yes TRAEFIK_ACME_EMAIL=admin@example.com
 ```
 
 Для доступа в traefik dashboard необходимо
@@ -33,10 +33,12 @@ make install ACME=yes DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
 сгенерить пароль
 
 ```bash
+LOGIN=admin
 PASS=$(openssl rand -hex 16; echo)
+echo "Login: $LOGIN"
 echo "Password: $PASS"
 echo -n "HTPASS: "
-echo $(htpasswd -nb admin $PASS) | sed -e s/\\$/\\$\\$/g
+echo $(htpasswd -nb $LOGIN $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 
 и добавить в docker-compose.yml после строки
@@ -45,5 +47,5 @@ echo $(htpasswd -nb admin $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 строку
 ```
-      - "traefik.http.middlewares.narra.basicauth.users=admin:<HTPASS>"
+      - "traefik.http.middlewares.narra.basicauth.users=<HTPASS>"
 ```
