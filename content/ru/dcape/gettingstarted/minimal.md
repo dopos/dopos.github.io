@@ -3,6 +3,7 @@ title: "Минимальная конфигурация"
 description: "Как развернуть dcape без gitea и DNS"
 date: 2024-02-07T00:34:41+09:00
 draft: false
+enableToc: false
 weight: 5
 ---
 
@@ -30,7 +31,7 @@ make install DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
 
 Для доступа в traefik dashboard необходимо
 
-сгенерить пароль
+* сгенерить пароль
 
 ```bash
 LOGIN=admin
@@ -41,7 +42,7 @@ echo -n "HTPASS: "
 echo $(htpasswd -nb $LOGIN $PASS) | sed -e s/\\$/\\$\\$/g
 ```
 
-и добавить в docker-compose.yml после строки
+* добавить в docker-compose.yml после строки
 ```
       - "traefik.http.routers.dashboard.middlewares=narra"
 ```
