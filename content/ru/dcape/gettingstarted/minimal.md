@@ -31,7 +31,7 @@ make install DNS=no AUTH_TOKEN=none AUTH_URL=none APPS_ALWAYS=manager \
 
 Для доступа в traefik dashboard необходимо
 
-* сгенерить пароль
+* сгенерировать пароль
 
 ```bash
 LOGIN=admin
@@ -51,3 +51,8 @@ echo $(htpasswd -nb $LOGIN $PASS) | sed -e s/\\$/\\$\\$/g
       - "traefik.http.middlewares.narra.basicauth.users=<HTPASS>"
 ```
 * выполнить `make up`
+
+После этого
+
+* dcape будет развернут в составе: traefik, postgresql, portainer
+* панель traefik будет доступна по адресу https://example.com/dashboard/ для учетной записи из п. "сгенерировать пароль"
