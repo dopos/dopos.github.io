@@ -1,19 +1,21 @@
 ---
-title: "enfist"
-date: 2020-01-30T00:38:25+09:00
-description: хранилище файлов конфигурации в postgresql с доступом через браузер и АПИ
+title: config
+description: интерфейс к хранилищу файлов конфигурации
 draft: false
 weight: 5
 ---
 
- Приложение |  [enfist](https://github.com/apisite/app-enfist)
- -- | --
- Docker | [ghcr.io/apisite/app-enfist](https://github.com/apisite/app-enfist/pkgs/container/app-enfist)
- Назначение | хранилище файлов конфигурации в postgresql с доступом через браузер и АПИ
+> Repo: [dcape-app-enfist](https://github.com/dopos/dcape-app-enfist)
+
+ Роль в dcape | Сервис | Docker image
+ --- | --- | ---
+ config | [enfist](https://github.com/apisite/app-enfist) | [app-enfist](https://github.com/apisite/app-enfist/pkgs/container/app-enfist)
+
+## Назначение
 
 **Enfist** - это сервис хранения конфигураций приложений. Конфигурации хранятся в БД в виде Key-value таблицы, где ключ (key) формируется из адреса git репозитория `organization--repo_name--branch` (`организация--проект--ветка`), а значение (value) - содержимое `.env` файла.
 
-Доступ к хранилищу ограничивается [narra](/dcape/baseapps/narra) и осуществляется через фронтенд **dcape**.
+Доступ к хранилищу ограничивается [narra](https://github.com/dopos/dcape-app-narra) и осуществляется через фронтенд **dcape**.
 
 Кроме веб-интерфейса, работа с конфигурациями запуска может осуществляться посредством [dcape-config-cli](https://github.com/dopos/dcape-config-cli).
 Примеры команд, доступных после клонирования (git clone) и настройки (make .env) dcape-config-cli:
@@ -27,3 +29,4 @@ weight: 5
 
 * `ENFIST_URL` - адрес сервиса enfist
 * `CIS_TOKEN` - токен для авторизации в gitea
+

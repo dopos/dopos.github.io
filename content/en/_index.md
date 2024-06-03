@@ -57,11 +57,11 @@ sections:
           bgcolor: '#283593'      
       - subtitlePosition: center
         description: "Container-Native, Continuous Delivery Platform"
-        image: images/drone.svg
+        image: images/woodpecker.svg
         color: white
         button: 
-          name: drone
-          link: https://www.drone.io/
+          name: woodpecker
+          link: https://woodpecker-ci.org/
           size: large
           target: _blank
           color: 'white'

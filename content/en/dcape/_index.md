@@ -25,4 +25,3 @@ DCAPE stands for "**D**ocker **c**omposed **ap**plication **e**nvironment".
 
 Most actual **dcape** documentation is available in Russian language by now. You can see it [here](/dcape). 
 
-

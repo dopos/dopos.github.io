@@ -1,17 +1,19 @@
 ---
-title: "traefik"
-date: 2020-01-30T00:38:25+09:00
-description: агрегация и проксирование www-сервисов развернутых приложений по заданному имени с поддержкой сертификатов Let's Encrypt
+title: router
+description: агрегация и проксирование www-сервисов развернутых приложений по заданному имени с поддержкой сертификатов Let&#39;s Encrypt
 draft: false
 weight: 1
 ---
 
- Приложение | [traefik](https://traefik.io/)  
- -- | --
- Docker | [traefik](https://hub.docker.com/_/traefik/)
- Назначение | агрегация и проксирование www-сервисов развернутых приложений по заданному имени с поддержкой сертификатов [Let's Encrypt](https://letsencrypt.org/)
+> Repo: [dcape-app-traefik](https://github.com/dopos/dcape-app-traefik)
+
+ Роль в dcape | Сервис | Docker images
+ --- | --- | ---
+ router | [traefik](https://traefik.io/) | [traefik](https://hub.docker.com/_/traefik)
 
 ## Назначение
+
+Агрегация и проксирование www-сервисов развернутых приложений по заданному имени с поддержкой сертификатов [Let's Encrypt](https://letsencrypt.org/)
 
 Traefik - ключевой сервис **dcape**. Он решает следующие задачи:
 
@@ -55,7 +57,7 @@ providers:
 
 Dcape поддерживает протокол TLS с использованием ключей [Let's Encrypt](https://ru.wikipedia.org/wiki/Let%E2%80%99s_Encrypt).
 
-Для получения сертификатов по протоколу `DNS-01` необходим доступ к АПИ сервера DNS. В состав dcape для этого включен сервер [powerdns](/dcape/baseapps/powerdns/). Если параметр `ACME` имеет значение `wild`, при выполнении команды `make apply` создается файл `var/traefik/traefik.env` с настройками для доступа к АПИ локальной копии [powerdns](/dcape/baseapps/powerdns/)
+Для получения сертификатов по протоколу `DNS-01` необходим доступ к АПИ сервера DNS. В состав dcape для этого включен сервер [powerdns](/dcape/baseapps/powerdns/). Если параметр `ACME` имеет значение `wild`, при выполнении команды `make apply` создается файл `var/traefik/traefik.env` с настройками для доступа к АПИ локальной копии [powerdns](/dcape/coreapps/powerdns/)
 
 ## Настройки контейнера для работы с TLS
 
@@ -102,3 +104,4 @@ dcape позволяет запуск нескольких экемпляров 
 
 * порты в параметрах `TRAEFIK_LISTEN` и `TRAEFIK_LISTEN_SSL`
 * параметр `DCAPE_TAG`
+

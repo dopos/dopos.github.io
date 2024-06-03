@@ -1,4 +1,3 @@
-version: '2.1'
 
 services:
 
@@ -14,8 +13,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - ${APP_ROOT}:/src
-    networks:
-      - lan
 
   dev:
     image: ${IMAGE}${IMAGE_VER}
@@ -30,8 +27,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - ${APP_ROOT}:/src
-    networks:
-      - lan
 
   www:
     image: nginx:1.19.4-alpine
@@ -54,10 +49,10 @@ services:
       # Attach site content
       - ${APP_ROOT}/public:/usr/share/nginx/html:ro
     restart: always
-    networks:
-      - lan
+
 
 networks:
-  lan:
-    external:
-      name: ${DCAPE_NET}
+  default:
+    name: ${DCAPE_NET}
+    external: true
+

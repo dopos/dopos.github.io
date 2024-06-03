@@ -52,7 +52,7 @@ make up
 
 `TOKEN` - ключ АПИ gitea, который создается вручную пользователем, имеющим права на создание
 * организации, указанной в параметре `NARRA_GITEA_ORG` (если она не создана ранее)
-* OAuth2 приложений narra и drone (их CLIENT_ID и CLIENT_KEY будут сохранены в .env).
+* OAuth2 приложений narra и woodpecker (их CLIENT_ID и CLIENT_KEY будут сохранены в .env).
 
 `TOKEN` используется однократно при выполнении `make gitea-setup` и нигде не сохраняется
 

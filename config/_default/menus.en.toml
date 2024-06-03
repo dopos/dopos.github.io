@@ -6,7 +6,7 @@
 
 [[main]]
   identifier = "updates"
-  name = "Updates"
-  url = "updates"
+  name = "ChangeLog"
+  url = "dcape/changelog"
   weight = 2
 

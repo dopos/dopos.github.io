@@ -1,0 +1,191 @@
+
+- name: core
+  url: https://github.com/dopos/dcape  #    - name: README.md
+  files:
+    - name: README.md
+      dest: ru/core/_index.md
+      filter: tail -n +24 | head -n -5
+#      filter: tail -n +7
+      template: default
+      vars:
+        title: core
+        anno: "Repo: [dcape](https://github.com/dopos/dcape)\n"
+        description: Ядро dcape
+        weight: 3
+    - name: CHANGELOG.md
+      dest: ru/core/changelog.md
+      filter: tail -n +5
+      template: default
+      vars:
+        title: changelog
+        description: история изменений
+        weight: 4
+
+- name: router
+  url: https://github.com/dopos/dcape-app-traefik
+  files:
+    - name: README.md
+      dest: ru/coreapps/router.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: router
+        anno: "Repo: [dcape-app-traefik](https://github.com/dopos/dcape-app-traefik)\n"
+        description: "агрегация и проксирование www-сервисов развернутых приложений по заданному имени с поддержкой сертификатов Let's Encrypt"
+        weight: 1
+
+- name: db
+  url: https://github.com/dopos/dcape-app-postgres
+  files:
+    - name: README.md
+      dest: ru/coreapps/db.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: db
+        anno: "Repo: [dcape-app-postgres](https://github.com/dopos/dcape-app-postgres)\n"
+        description: хранение конфигураций всех приложений и размещение баз данных приложений, которым требуется СУБД
+        weight: 2
+
+- name: vcs
+  url: https://github.com/dopos/dcape-app-gitea
+  files:
+    - name: README.md
+      dest: ru/coreapps/vcs.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: vcs
+        anno: "Repo: [dcape-app-gitea](https://github.com/dopos/dcape-app-gitea)\n"
+        description: git-совместимый сервис для работы с репозиториями
+        weight: 3
+
+- name: cicd
+  url: https://github.com/dopos/dcape-app-woodpecker
+  files:
+    - name: README.md
+      dest: ru/coreapps/cicd.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: cicd
+        anno: "Repo: [dcape-app-woodpecker](https://github.com/dopos/dcape-app-woodpecker)\n"
+        description: развёртывание приложений по событиям из gitea
+        weight: 4
+
+- name: config
+  url: https://github.com/dopos/dcape-app-enfist
+  files:
+    - name: README.md
+      dest: ru/coreapps/config.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: config
+        anno: "Repo: [dcape-app-enfist](https://github.com/dopos/dcape-app-enfist)\n"
+        description: интерфейс к хранилищу файлов конфигурации
+        weight: 5
+
+- name: auth
+  url: https://github.com/dopos/dcape-app-narra
+  files:
+    - name: README.md
+      dest: ru/coreapps/auth.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: auth
+        anno: "Repo: [dcape-app-narra](https://github.com/dopos/dcape-app-narra)\n"
+        description: развёртывание приложений по событиям из gitea
+        weight: 6
+
+- name: ns
+  url: https://github.com/dopos/dcape-app-powerdns
+  files:
+    - name: README.md
+      dest: ru/coreapps/ns.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: ns
+        anno: "Repo: [dcape-app-powerdns](https://github.com/dopos/dcape-app-powerdns)\n"
+        description: DNS-сервер для поддержки wildcard DNS сертификатов
+        weight: 7
+
+- name: manager
+  url: https://github.com/dopos/dcape-app-portainer
+  files:
+    - name: README.md
+      dest: ru/coreapps/manager.md
+      filter: tail -n +12 | head -n -11
+      template: default
+      vars:
+        title: manager
+        anno: "Repo: [dcape-app-portainer](https://github.com/dopos/dcape-app-portainer)\n"
+        description: Web-интерфейс управления docker
+        weight: 8
+
+- name: app-template
+  url: https://github.com/dopos/dcape-app-template
+  files:
+    - name: README.md
+      dest: ru/addons/app-template.md
+      filter: tail -n +10 | head -n -5
+      template: default
+      vars:
+        title: App template
+        anno: "Repo: [dcape-app-template](https://github.com/dopos/dcape-app-template)\n"
+        description: Шаблон приложения для dcape v3
+        weight: 1
+
+- name: app-nginx-sample
+  url: https://github.com/dopos/dcape-app-nginx-sample
+  files:
+    - name: README.md
+      dest: ru/addons/nginx-sample.md
+      filter: tail -n +10 | head -n -5
+      template: default
+      vars:
+        title: Nginx sample app
+        anno: "Repo: [dcape-app-nginx-sample](https://github.com/dopos/dcape-app-nginx-sample)\n"
+        description: Пример nginx приложения
+        weight: 2
+
+- name: app-pg-backup
+  url: https://github.com/dopos/dcape-app-pg-backup
+  files:
+    - name: README.md
+      dest: ru/addons/pg-backup.md
+      filter: tail -n +10 | head -n -5
+      template: default
+      vars:
+        title: PG Backup
+        anno: "Repo: [dcape-app-pg-backup](https://github.com/dopos/dcape-app-pg-backup)\n"
+        description: Резервное копирование баз postgresql
+        weight: 3
+
+- name: config-cli
+  url: https://github.com/dopos/dcape-config-cli
+  files:
+    - name: README.md
+      dest: ru/addons/config-cli.md
+      filter: tail -n +10 | head -n -5
+      template: default
+      vars:
+        title: Config CLI
+        anno: "Repo: [dcape-config-cli](https://github.com/dopos/dcape-config-cli)\n"
+        description: CLI для доступа к файлам конфигурации
+        weight: 4
+
+- name: dns-config
+  url: https://github.com/dopos/dcape-dns-config
+  files:
+    - name: README.md
+      dest: ru/addons/dns-config.md
+      filter: tail -n +2 | head -n -5
+      template: default
+      vars:
+        title: DNS Config
+        anno: "Repo: [dcape-dns-config](https://github.com/dopos/dcape-dns-config)\n"
+        description: Управление зонами DNS в postgresql
+        weight: 5

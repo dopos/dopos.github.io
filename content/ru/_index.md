@@ -16,8 +16,8 @@ landing:
     - link: https://github.com/dopos/dcape
       text: DCAPE
       color: primary
-    - link: https://github.com/topics/dcape2-compartible
-      text: Настройки приложений
+    - link: https://github.com/topics/dcape3-app
+      text: Приложения
       color: primary
     - link: dcape
       text: Документация
@@ -57,11 +57,11 @@ sections:
           bgcolor: '#283593'      
       - subtitlePosition: center
         description: "Выполнение кода для тестов и развёртывания при изменении в git-репозитории"
-        image: images/drone.svg
-        color: white
+        image: images/woodpecker.svg
+        color: black
         button: 
-          name: drone
-          link: https://www.drone.io/
+          name: woodpecker
+          link: https://woodpecker-ci.org/
           size: large
           target: _blank
           color: 'white'
@@ -82,7 +82,7 @@ sections:
         image: images/dc.svg
         color: white
         button: 
-          name: docker-compose
+          name: docker compose
           link: https://docs.docker.com/compose/
           size: large
           target: _blank

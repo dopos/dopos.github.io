@@ -44,7 +44,7 @@ sudo service network-manager reload
 ```zone.conf
 srv1.domain.tld.        A       19.72.10.23
 git.srv1.domain.tld.    A       19.72.10.23
-drone.srv1.domain.tld.  A       19.72.10.23
+cicd.srv1.domain.tld.  A       19.72.10.23
 port.srv1.domain.tld.   A       19.72.10.23
 ns.srv1.domain.tld.     A       19.72.10.23
 ```

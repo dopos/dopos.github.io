@@ -55,4 +55,4 @@ weight: 6
 
 ## См. также
 
-* [Варианты файла конфигурации traefik](/dcape/baseapps/traefik/#configs)
+* [Варианты файла конфигурации traefik](/dcape/coreapps/traefik/#configs)

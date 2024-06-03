@@ -1,0 +1,12 @@
+---
+title: Зависимости
+description: Необходимое ПО для приложений дикейп
+draft: false
+weight: 3
+---
+
+* linux 64bit с установленными git, make, sed, dig
+* [docker](http://docker.io)
+* [дикейп](https://github.com/dopos/dcape) v3
+* Сервис управления версиями, например [Gitea](https://gitea.io) (опционально поставляется в составе дикейп)
+* Сервис CI/CD, например [Woodpecker CI](https://woodpecker-ci.org/) (опционально поставляется в составе дикейп)

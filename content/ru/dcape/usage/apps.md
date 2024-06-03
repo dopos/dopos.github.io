@@ -8,31 +8,32 @@ draft: false
 
 ## Введение
 
-Dcape v2 предназначен для построения gitops (CI/CD) решений, в которых на каждом сервере установлен **dcape** и на одном - web-сервис git (например: gitea), который по факту изменений в репозитории активирует **drone** на присоединенных серверах.
+Dcape предназначен для построения gitops (CI/CD) решений, в которых на каждом сервере установлен **dcape** и на одном - web-сервис git (например: gitea), который по факту изменений в репозитории активирует **drone** на присоединенных серверах.
 
 После развёртывания сервисов git/drone, задача dcape уже решена, но возникает возможность добавить в деплой:
 
-* [docker-compose.yml](https://github.com/dopos/dcape/blob/v2/apps/drone/dcape-app/docker-compose.yml)
-* [Makefile](https://github.com/dopos/dcape/blob/v2/apps/drone/dcape-app/Makefile)
+* [Makefile.app](https://github.com/dopos/dcape/blob/v3/Makefile.app) для использования в директиве `include` файла `Makefile` адаптируемого приложения (чтобы не дублировать цели) 
+* [docker-compose.app.yml](https://github.com/dopos/dcape/blob/v3/docker-compose.app.yml) для использования в качестве основы для [override](https://docs.docker.com/compose/extends/) в адаптируемом приложении
 
 Эти файлы добавляются в образ `dcape-compose`, поэтому доступны и на хостовой системе и при развёртывании. Для работы с ними в `Makefile` приложения надо добавить директивы:
 
 {{< highlight Makefile "linenos=table,anchorlinenos=true,lineanchors=makefile" >}}
 # ------------------------------------------------------------------------------
-# Find and include DCAPE/apps/drone/dcape-app/Makefile
-DCAPE_COMPOSE  ?= dcape-compose
-DCAPE_MAKEFILE ?= $(shell docker inspect -f "{{.Config.Labels.dcape_app_makefile}}" $(DCAPE_COMPOSE))
-ifeq ($(shell test -e $(DCAPE_MAKEFILE) && echo -n yes),yes)
-  include $(DCAPE_MAKEFILE)
+# Find and include DCAPE_ROOT/Makefile
+DCAPE_COMPOSE   ?= dcape-compose
+DCAPE_ROOT      ?= $(shell docker inspect -f "{{.Config.Labels.dcape_root}}" $(DCAPE_COMPOSE))
+
+ifeq ($(shell test -e $(DCAPE_ROOT)/Makefile.app && echo -n yes),yes)
+  include $(DCAPE_ROOT)/Makefile.app
 else
-  include /opt/dcape-app/Makefile
+  include /opt/dcape/Makefile.app
 endif
 {{< / highlight >}}
 Это позволяет
 * не дублировать в make такие цели, как `dc`, `db-create`, `.drone-default`
 * директивой `USE_DB=yes` добавлять в .env настройки БД и активировать команды `db-*`
 * директивой `ADD_USER=yes` добавлять в .env настройки учетной записи пользователя
-* использовать [docker-compose.yml](https://github.com/dopos/dcape/blob/v2/apps/drone/dcape-app/docker-compose.yml) в цели `dc` как основу для перезаписи.
+* использовать [docker-compose.app.yml](https://github.com/dopos/dcape/blob/v3/docker-compose.app.yml) в цели `dc` как основу для перезаписи.
 
 См. также: [Пример использования](https://github.com/dopos/dcape-app-gomodproxy)
 
@@ -50,9 +51,9 @@ endif
 
 Для развертывания приложения в среде **dcape**, оно должно поддерживать интеграцию с тремя подсистемами:
 
-* [traefik](/dcape/baseapps/traefik)
-* [drone](/dcape/baseapps/drone)
-* [enfist](/dcape/baseapps/enfist)
+* [traefik](/dcape/coreapps/router)
+* [woodpecker](/dcape/coreapps/cicd)
+* [enfist](/dcape/coreapps/config)
 
 Ниже описаны примеры такий интеграции
 
@@ -64,9 +65,9 @@ endif
 
 {{< source "static/samples/docker-compose.yml" >}}
 
-## Интеграция с drone
+## Интеграция с woodpecker
 
-Производится с помощью файла `.drone.yml`, который размещается в корне репозитория.
+Производится с помощью файла `.woodpecker.yml`, который размещается в корне репозитория.
 
 ### Пример .drone.yml
 
@@ -101,4 +102,4 @@ enfist - это сервис хранения файлов конфигурац�
 
 ## См. также
 
-* [Актуальный список адаптированных приложений dcape](https://github.com/dopos?q=dcape-app)
+* [Актуальный список адаптированных приложений dcape](https://github.com/dopos?q=dcape3-app)

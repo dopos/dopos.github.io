@@ -74,6 +74,9 @@ down: dc
 # Thish works if path is the same for host, docker, docker-compose and child container
 ## run $(CMD) via docker-compose
 dc: docker-compose.yml
+	@docker compose -p $$APP_TAG $(CMD)
+
+dc-old:
 	@docker run --rm  -i \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $$PWD:$$PWD -w $$PWD \
@@ -101,7 +104,7 @@ run: log-and-down
 
 # see https://stackoverflow.com/a/32788564
 log-and-down:
-	@bash -c "trap 'trap - SIGINT SIGTERM ERR; $(MAKE) -s down' SIGINT SIGTERM ERR; docker logs -f $(APP_TAG)_dev_1"
+	@bash -c "trap 'trap - SIGINT SIGTERM ERR; $(MAKE) -s down' SIGINT SIGTERM ERR; docker logs -f $(APP_TAG)-dev-1"
 
 # ------------------------------------------------------------------------------
 ## Application setup
@@ -109,9 +112,9 @@ log-and-down:
 
 ## generate config file
 ## (if not exists)
-init:
-	@[ -f $(CFG) ] && { echo "$(CFG) already exists. Skipping" ; exit 0 ; } || true
-	@echo "$$CONFIG_DEF" > $(CFG)
+#init:
+#	@[ -f $(CFG) ] && { echo "$(CFG) already exists. Skipping" ; exit 0 ; } || true
+#	@echo "$$CONFIG_DEF" > $(CFG)
 
 ## generate config sample
 ## (if .env exists, its values will be used)
