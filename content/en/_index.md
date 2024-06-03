@@ -79,7 +79,7 @@ sections:
           bgcolor: '#283593'
       - subtitlePosition: center
         description: "tool for running multi-container applications on Docker"
-        image: https://github.com/docker/compose/blob/master/logo.png?raw=true
+        image: images/dc.svg
         color: white
         button: 
           name: docker-compose
