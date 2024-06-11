@@ -17,7 +17,7 @@ weight: 4
 ```bash
 cd /opt
 sudo mkdir dcape && sudo chown $USER dcape
-git clone -b v2 --single-branch --depth 1 https://github.com/dopos/dcape.git
+git clone --depth 1 https://github.com/dopos/dcape.git
 cd dcape
 ```
 

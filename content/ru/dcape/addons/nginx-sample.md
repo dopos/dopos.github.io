@@ -30,7 +30,7 @@ This project contains
 
 * linux 64bit (git, make, sed)
 * [docker](http://docker.io)
-* [dcape](https://github.com/dopos/dcape) v2
+* [dcape](https://github.com/dopos/dcape) v3
 * Git service ([github](https://github.com), [gitea](https://gitea.io) or [gogs](https://gogs.io))
 
 ## Install
@@ -46,7 +46,7 @@ This project contains
 ### By hands
 
 ```bash
-git clone -b v2 --single-branch --depth 1 https://github.com/dopos/dcape-app-nginx-sample.git
+git clone --depth 1 https://github.com/dopos/dcape-app-nginx-sample.git
 cd dcape-app-nginx-sample
 make config
 ... <edit .env.sample>

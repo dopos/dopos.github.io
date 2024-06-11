@@ -16,7 +16,7 @@ weight: 1
 , установка dcape на этом новом сервере может быть произведена так:
 
 ```bash
-git clone -b v2 --single-branch --depth 1 https://github.com/dopos/dcape.git
+git clone --depth 1 https://github.com/dopos/dcape.git
 cd dcape
 make install ACME=wild DNS=wild DCAPE_DOMAIN=srv1.domain.tld \
   TRAEFIK_ACME_EMAIL=admin@domain.tld \
