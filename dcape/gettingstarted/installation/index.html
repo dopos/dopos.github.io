@@ -24,7 +24,7 @@ dcape<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>cd</span> /opt
 </span></span><span class=line><span class=cl>sudo mkdir dcape <span class=o>&amp;&amp;</span> sudo chown <span class=nv>$USER</span> dcape
-</span></span><span class=line><span class=cl>git clone -b v2 --single-branch --depth <span class=m>1</span> https://github.com/dopos/dcape.git
+</span></span><span class=line><span class=cl>git clone --depth <span class=m>1</span> https://github.com/dopos/dcape.git
 </span></span><span class=line><span class=cl><span class=nb>cd</span> dcape
 </span></span></code></pre></td></tr></table></div></div><h3 id=настройка-и-запуск>Настройка и запуск</h3><h3 id=локальный-сервер>Локальный сервер</h3><p>Вариант без поддержки SSL, но с установкой gitea. Выполняется в 3 шага, т.к. на шаге 2 необходимо использовать браузер для</p><ul><li>завершения установки gitea</li><li>создания API TOKEN</li></ul><h4 id=шаг-1-подготовка-к-запуску-gitea>Шаг 1. Подготовка к запуску gitea</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
